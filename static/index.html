@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c1a">
+  <title>Orbit — Space Calculator</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <header><a class="brand" href="/">◉ <span>ORBIT<span class="brand-dot">.</span></span></a><span class="header-note">A LITTLE SPACE TO THINK</span></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span></span> YOUR EVERYDAY MATH, ELEVATED</p>
+      <h1>Small numbers.<br><em>Infinite possibilities.</em></h1>
+      <p class="description">From a quick sum to your next big idea.<br>A calm corner of the universe to work it out.</p>
+      <div class="music-player">
+        <audio id="background-music" src="/music.mp3" autoplay loop preload="auto"></audio>
+        <button id="music-toggle" type="button" aria-controls="background-music" aria-label="Play background music">Play music</button>
+        <div><span class="music-track">SKILLET — MONSTER</span><span id="music-status" role="status">Loading music…</span></div>
+      </div>
+      <div class="planet-scene" aria-hidden="true"><div class="orbit"></div><div class="planet"></div><div class="moon"></div><span class="coordinate">01 / EXPLORE THE POSSIBILITIES</span></div>
+    </section>
+    <section class="calculator" aria-label="Calculator">
+      <div class="card-heading"><span>FLIGHT DECK</span><span class="status"><i></i> READY</span></div>
+      <div class="screen">
+        <p id="expression">Ready for liftoff</p>
+        <output id="display" aria-label="Calculator display" aria-live="polite">0</output>
+        <p id="error" role="alert"></p>
+      </div>
+      <div class="keypad">
+        <button data-action="clear" class="utility">AC</button><button data-action="sign" class="utility" aria-label="Change sign">+/−</button><button data-action="delete" class="utility" aria-label="Delete last digit">⌫</button><button data-operator="/" class="operator" aria-label="Divide">÷</button>
+        <button data-digit="7">7</button><button data-digit="8">8</button><button data-digit="9">9</button><button data-operator="*" class="operator" aria-label="Multiply">×</button>
+        <button data-digit="4">4</button><button data-digit="5">5</button><button data-digit="6">6</button><button data-operator="-" class="operator" aria-label="Subtract">−</button>
+        <button data-digit="1">1</button><button data-digit="2">2</button><button data-digit="3">3</button><button data-operator="+" class="operator" aria-label="Add">+</button>
+        <button data-digit="0" class="zero">0</button><button data-digit="." aria-label="Decimal point">.</button><button data-action="equals" class="equals" aria-label="Calculate result">=</button>
+      </div>
+      <p class="keyboard-hint">Keyboard friendly <span>↵ equals · esc clear</span></p>
+    </section>
+  </main>
+  <footer><span>BUILT FOR CURIOUS MINDS</span><span>STAY CURIOUS. KEEP EXPLORING. <b>✦</b></span></footer>
+</body>
+</html>
