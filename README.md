@@ -1,6 +1,17 @@
 # Python Calculator
 
-## Deploy
+## GitHub Pages
+
+Website: **https://bocchi5101.github.io/Calculator/**
+
+The workflow in `.github/workflows/pages.yml` publishes `static/` after each
+push to `main`. The web calculator performs arithmetic in JavaScript, so it
+works on GitHub Pages without a Python server. Relative asset paths support
+the `/Calculator/` URL, including the music player.
+
+The Python terminal calculator and optional Python API are also included.
+
+## Optional Render deployment
 
 This directory is the repository root. A Render Blueprint is included in
 `render.yaml` to host both the frontend and Python calculation API.
@@ -34,8 +45,8 @@ loops. If your browser blocks autoplay with sound, click **Play music**.
 Use **Pause music** to stop playback.
 
 The responsive HTML/CSS interface includes a star field, a CSS planet, calculator
-buttons, keyboard input, clear, backspace, and sign switching. Calculations are
-sent to the existing Python `calculate()` function. Chained operations are
+buttons, keyboard input, clear, backspace, and sign switching. Web calculations
+run in the browser. Chained operations are
 evaluated from left to right, like a basic pocket calculator.
 
 ## Terminal interface

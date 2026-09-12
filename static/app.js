@@ -9,6 +9,25 @@ let operator = null;
 let replace = false;
 let busy = false;
 
+function calculate(first, operator, second) {
+  if (!Number.isFinite(first) || !Number.isFinite(second)) {
+    throw new Error('Please enter finite numbers.');
+  }
+  let result;
+  switch (operator) {
+    case '+': result = first + second; break;
+    case '-': result = first - second; break;
+    case '*': result = first * second; break;
+    case '/':
+      if (second === 0) throw new Error('Cannot divide by zero.');
+      result = first / second;
+      break;
+    default: throw new Error('Choose +, −, ×, or ÷.');
+  }
+  if (!Number.isFinite(result)) throw new Error('The result is too large.');
+  return result;
+}
+
 function render() {
   display.textContent = current;
   buttons.forEach(button => {
@@ -23,21 +42,14 @@ async function evaluate() {
   render();
   const label = `${first} ${symbols[operator]} ${current}`;
   try {
-    const response = await fetch('/api/calculate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ first, operator, second: current }),
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error || 'Unable to calculate.');
-    current = String(data.result);
+    current = String(calculate(first, operator, Number(current)));
     expression.textContent = `${label} =`;
     first = null;
     operator = null;
     replace = true;
     return true;
   } catch (failure) {
-    error.textContent = failure instanceof TypeError ? 'Connection lost. Check that the Python server is running.' : failure.message;
+    error.textContent = failure.message;
     return false;
   } finally {
     busy = false;
